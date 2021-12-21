@@ -1,70 +1,174 @@
-# Getting Started with Create React App
+# Testing-Intelligence-Machine-TIM
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<div id="top"></div>
 
-## Available Scripts
+[![LinkedIn][linkedin-shieldalex]][linkedin-urlalex]
+[![GitHub][github-shieldalex]][github-urlalex]
+<br />
+[![LinkedIn][linkedin-shieldanthony]][linkedin-urlanthony]
+[![GitHub][github-shieldanthony]][github-urlanthony]
+<br />
+[![LinkedIn][linkedin-shieldbryce]][linkedin-urlbryce]
+[![GitHub][github-shieldbryce]][github-urlbryce]
+<br />
+[![LinkedIn][linkedin-shield]][linkedin-url]
+[![GitHub][github-shield]][github-url]
+<br />
+[![LinkedIn][linkedin-shieldvalton]][linkedin-urlvalton]
+[![GitHub][github-shieldvalton]][github-urlvalton]
 
-In the project directory, you can run:
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li>
+  </ol>
+</details>
 
-### `npm start`
+<!-- ABOUT THE PROJECT -->
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## About The Project
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+-> Fill in information about our Project here as we go.
 
-### `npm test`
+Problem Domain:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- `Insert our Problem Domain when we lock in our project idea`
 
-### `npm run build`
+Project Management Board:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+`(Trello Board Here UML Here)`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+UML-ver1:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+`(UML Version 2 here)`
 
-### `npm run eject`
+<br />
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+UML-ver2:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+`(UML Version 2 here)`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+<br />
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+UML-ver3:
 
-## Learn More
+`(UML Version 3 here)`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<br />
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Schema-UML:
 
-### Code Splitting
+`(Schema UML Here)`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+<br />
 
-### Analyzing the Bundle Size
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Project Dependencies
 
-### Making a Progressive Web App
+### Prerequisites
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+This is an example of how to list things you need to use the software and how to install them.
 
-### Advanced Configuration
+### Installation
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- `Add Node Files Dependecies List`
 
-### Deployment
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Usage
 
-### `npm run build` fails to minify
+`Insert how to use our App here as we go`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+<!-- CONTRIBUTING -->
+
+## Contributing
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+<!-- LICENSE -->
+
+## License
+
+Distributed under the MIT License. See `LICENSE.txt` for more information.
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+<!-- CONTACT -->
+
+## Contact
+
+Anthony Morton - AnthonyMorton760@gmail.com  
+Bryce Pfingston - bryce.pfingston@gmail.com  
+Jacob Gregor - jake_gregor@icloud.com  
+Valton Jones - jones.trae@gmail.com  
+Alex Grazda - agrazda@gmail.com
+
+Project Link: [GitHub](https://github.com/Team-JABA/401-final-project)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+<!-- ACKNOWLEDGMENTS -->
+
+## Acknowledgments
+
+Code Fellows, friends, and family
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+
+[linkedin-shield]: https://img.shields.io/badge/JacobGregor-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: https://linkedin.com/in/jacob-l-gregor
+[github-shield]: https://img.shields.io/badge/JacobGregor-GitHub-black.svg?style=for-the-badge&logo=GitHub&colorB=555
+[github-url]: https://github.com/JacobGregor
+[product-screenshot]: Anthony
+[linkedin-shieldanthony]: https://img.shields.io/badge/AnthonyMorton-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-urlanthony]: https://www.linkedin.com/in/anthony-louis-morton/
+[github-shieldanthony]: https://img.shields.io/badge/AnthonyMorton-GitHub-black.svg?style=for-the-badge&logo=GitHub&colorB=555
+[github-urlanthony]: https://github.com/anthonylouismorton
+[product-screenshot]: Bryce
+[linkedin-shieldbryce]: https://img.shields.io/badge/BrycePfingston-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-urlbryce]: https://www.linkedin.com/in/bryce-pfingston/
+[github-shieldbryce]: https://img.shields.io/badge/BrycePfingston-GitHub-black.svg?style=for-the-badge&logo=GitHub&colorB=555
+[github-urlbryce]: https://github.com/bpfingston
+[product-screenshot]: Valton
+[linkedin-shieldvalton]: https://img.shields.io/badge/ValtonJones-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-urlvalton]: https://www.linkedin.com/in/valton-jones-77482536/
+[github-shieldvalton]: https://img.shields.io/badge/ValtonJones-GitHub-black.svg?style=for-the-badge&logo=GitHub&colorB=555
+[github-urlvalton]: https://github.com/jones-trae
+[product-screenshot]: images/screenshot.png
+[product-screenshot]: Alex
+[linkedin-shieldalex]: https://img.shields.io/badge/AlexGrazda-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-urlalex]: https://www.linkedin.com/in/alex-grazda/
+[github-shieldalex]: https://img.shields.io/badge/AlexGrazda-GitHub-black.svg?style=for-the-badge&logo=GitHub&colorB=555
+[github-urlalex]: https://github.com/agrazda
+[product-screenshot]: images/screenshot.png
