@@ -47,15 +47,15 @@
 
 ## About The Project
 
--> Fill in information about our Project here as we go.
+-> `Canary` is a CrimeWatch Application build with the safety and security of Families and Neighbors in-mind. Quickly view updated crime markers on an interactive web-application. View detailed Crime reports straight from the your local police precinct, or submit a crime and have our team verify its authenticity. If we are unable to verify we will repor the crime as (unverified) until we are able to match the crime with a police report from our database.
 
 Problem Domain:
 
-- `Insert our Problem Domain when we lock in our project idea`
+- Im moving to a new neighborhood or Ive recenlty become a leader in my community and id like to make sure im up-to-date on all crime occuring around my area. I wish there was a website where I could view local crimes, report local crimes, Verify these crimes occured and view their status as they update. This is where `Canary` comes to the rescue!
 
 Project Management Board:
 
-`(Trello Board Here UML Here)`
+`(GitHub Projects Board Here UML Here)`
 
 UML-ver1:
 
