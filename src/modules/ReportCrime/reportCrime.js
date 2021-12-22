@@ -1,30 +1,17 @@
 import React from 'react';
-import {
-	DatePicker,
-	TimePicker,
-	AdapterDateFns,
-	LocalizationProvider,
-} from '@mui/lab';
+import { DatePicker, TimePicker, LocalizationProvider } from '@mui/lab';
 import { TextField, TextareaAutosize } from '@mui/material';
 
 export default function ReportCrime() {
 	return (
 		<>
-			<LocalizationProvider dateAdapter={AdapterDateFns}>
+			<LocalizationProvider>
 				<DatePicker
 					label='Incedent Date'
-					value={value}
-					onChange={(newValue) => {
-						setValue(newValue);
-					}}
 					renderInput={(params) => <TextField {...params} />}
 				/>
 				<TimePicker
 					label='Incedent Time'
-					value={value}
-					onChange={(newValue) => {
-						setValue(newValue);
-					}}
 					renderInput={(params) => <TextField {...params} />}
 				/>
 				<TextareaAutosize
@@ -36,3 +23,5 @@ export default function ReportCrime() {
 		</>
 	);
 }
+
+/// This file needs to be reworked. -> Not compiling right;

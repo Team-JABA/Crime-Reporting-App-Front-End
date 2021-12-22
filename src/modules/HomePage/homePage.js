@@ -23,8 +23,8 @@ function HomePage() {
 			>
 				<TextField id='username' label='username' variant='outlined' />
 			</Box>
-			<Button variant='contained'>Login</Button>;
-			<Button variant='contained'>Sign Up</Button>;
+			<Button variant='contained'>Login</Button>
+			<Button variant='contained'>Sign Up</Button>
 			<p>
 				Tired of seeing crime that isnt being reported?
 				<br />
