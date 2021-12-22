@@ -1,28 +1,27 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import AdapterDateFns from '@mui/lab/AdapterDateFns';
-import LocalizationProvider from '@mui/lab/LocalizationProvider'; 
+import { DatePicker, TimePicker, LocalizationProvider } from '@mui/lab';
+import { TextField, TextareaAutosize } from '@mui/material';
 
-<LocalizationProvider dateAdapter={AdapterDateFns}>
-  <DatePicker
-    label="Incedent Date"
-    value={value}
-    onChange={(newValue) => {
-      setValue(newValue);
-    }}
-    renderInput={(params) => <TextField {...params} />}
-  />
-   <TimePicker
-    label="Incedent Time"
-    value={value}
-    onChange={(newValue) => {
-      setValue(newValue);
-    }}
-    renderInput={(params) => <TextField {...params} />}
-  />
-  <TextareaAutosize
-    aria-label="empty textarea"
-    placeholder="Empty"
-    style={{ width: 200 }}
-  />
-</LocalizationProvider>
+export default function ReportCrime() {
+	return (
+		<>
+			<LocalizationProvider>
+				<DatePicker
+					label='Incedent Date'
+					renderInput={(params) => <TextField {...params} />}
+				/>
+				<TimePicker
+					label='Incedent Time'
+					renderInput={(params) => <TextField {...params} />}
+				/>
+				<TextareaAutosize
+					aria-label='empty textarea'
+					placeholder='Empty'
+					style={{ width: 200 }}
+				/>
+			</LocalizationProvider>
+		</>
+	);
+}
+
+/// This file needs to be reworked. -> Not compiling right;
