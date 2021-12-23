@@ -1,15 +1,17 @@
 import Header from './modules/Header/Header';
-import Main from './Main';
 import Footer from './modules/Footer/Footer';
+import Map from './modules/Map/Map';
 
 function App() {
 	return (
 		<div className='App'>
 			<Header />
-			<Main />
+			<Map />
 			<Footer />
 		</div>
 	);
 }
+
+// need to get a browser router going here.
 
 export default App;

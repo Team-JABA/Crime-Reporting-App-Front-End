@@ -159,3 +159,6 @@ function Header() {
 }
 
 export default Header;
+
+// need to get Nav Links installed here so we can link to different pages in the application.
+//I.E the profile, ReportCrime Page and the CrimeList Page
