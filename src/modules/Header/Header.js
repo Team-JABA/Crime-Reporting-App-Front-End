@@ -1,20 +1,26 @@
 import React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
+import {
+	AppBar,
+	Box,
+	Toolbar,
+	IconButton,
+	Typography,
+	Menu,
+	Container,
+	Avatar,
+	Button,
+	Tooltip,
+	MenuItem,
+} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
+import LogoutButton from '../Buttons/Logout';
+import LoginButton from '../Buttons/Login';
+import { useAuth0 } from '@auth0/auth0-react';
 
 function Header() {
-	const pages = ['Products', 'Pricing', 'Blog'];
-	const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+	const pages = ['Home', 'Crime List', 'Report'];
+	const settingsLogout = ['Profile', 'Account', 'Dashboard', <LogoutButton />];
+	const settingsLogin = ['Profile', 'Account', 'Dashboard', <LoginButton />];
 	const [anchorElNav, setAnchorElNav] = React.useState(null);
 	const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -32,6 +38,12 @@ function Header() {
 	const handleCloseUserMenu = () => {
 		setAnchorElUser(null);
 	};
+	const { user, isAuthenticated, isLoading } = useAuth0();
+
+	if (isLoading) {
+		return <div>Loading ...</div>;
+	}
+
 	return (
 		<AppBar position='static'>
 			<Container maxWidth='xl'>
@@ -104,7 +116,11 @@ function Header() {
 					<Box sx={{ flexGrow: 0 }}>
 						<Tooltip title='Open settings'>
 							<IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-								<Avatar alt='Remy Sharp' src='/static/images/avatar/2.jpg' />
+								{!isAuthenticated ? (
+									<Avatar alt='Remy Sharp' src='/static/images/avatar/2.jpg' />
+								) : (
+									<Avatar alt={user.name} src={user.picture} />
+								)}
 							</IconButton>
 						</Tooltip>
 						<Menu
@@ -123,17 +139,23 @@ function Header() {
 							open={Boolean(anchorElUser)}
 							onClose={handleCloseUserMenu}
 						>
-							{settings.map((setting) => (
-								<MenuItem key={setting} onClick={handleCloseNavMenu}>
-									<Typography textAlign='center'>{setting}</Typography>
-								</MenuItem>
-							))}
+							{!isAuthenticated
+								? settingsLogin.map((setting) => (
+										<MenuItem key={setting} onClick={handleCloseNavMenu}>
+											<Typography textAlign='center'>{setting}</Typography>
+										</MenuItem>
+								  ))
+								: settingsLogout.map((setting) => (
+										<MenuItem key={setting} onClick={handleCloseNavMenu}>
+											<Typography textAlign='center'>{setting}</Typography>
+										</MenuItem>
+								  ))}
 						</Menu>
 					</Box>
 				</Toolbar>
 			</Container>
 		</AppBar>
-	); /// Closes the return();
+	);
 }
 
 export default Header;
