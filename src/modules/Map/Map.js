@@ -6,8 +6,9 @@ function Map() {
 	const MAP_API = process.env.REACT_APP_MAP_API_KEY;
 
 	const containerStyle = {
-		width: '700px',
-		height: '450px',
+		width: '100vh',
+		height: '87vh',
+		margin: '10px',
 	};
 
 	const center = {

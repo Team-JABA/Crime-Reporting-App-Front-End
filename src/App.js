@@ -1,12 +1,12 @@
 import Header from './modules/Header/Header';
 import Footer from './modules/Footer/Footer';
-import Map from './modules/Map/Map';
+import Main from './modules/Main/Main';
 
 function App() {
 	return (
-		<div className='App'>
+		<div>
 			<Header />
-			<Map />
+			<Main />
 			<Footer />
 		</div>
 	);
