@@ -1,6 +1,5 @@
 import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
@@ -22,10 +21,16 @@ export default function Login() {
 			<CssBaseline />
 			<Box
 				sx={{
-					marginTop: 8,
+					marginTop: 1.3,
 					display: 'flex',
 					flexDirection: 'column',
 					alignItems: 'center',
+					backgroundImage:
+						'url(https://source.unsplash.com/random/?neighborhood)',
+					backgroundRepeat: 'no-repeat',
+					backgroundSize: 'cover',
+					width: '92vh',
+					height: '87vh',
 				}}
 			>
 				<Avatar>
@@ -46,9 +51,10 @@ export default function Login() {
 						id='email'
 						label='Email Address'
 						name='email'
-						autoComplete='email'
 						autoFocus
 						disabled='true'
+						color='secondary'
+						variant='filled'
 					/>
 					<TextField
 						margin='normal'
@@ -58,8 +64,8 @@ export default function Login() {
 						label='Password'
 						type='password'
 						id='password'
-						autoComplete='current-password'
 						disabled='true'
+						variant='filled'
 					/>
 					<LoginButton />
 				</Box>
