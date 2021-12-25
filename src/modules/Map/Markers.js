@@ -12,3 +12,8 @@ export default function Markers() {
 
 
 // Here we can  create a markers state to go through our Crime API and pull data when they do an api call to the system and load pins for each place on the map. 
+
+// MArkers needs to pull from the DataBase and pull all the information it needs for a pin from the Crime API in order to generate Pins to the Map.
+
+//The Report a Crime FOrm should be able to submit a new crime to the DB and pin it to the map and update the map. 
+
