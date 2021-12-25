@@ -1,11 +1,12 @@
 import React from 'react';
-import { DatePicker, TimePicker, LocalizationProvider } from '@mui/lab';
-import { TextField, TextareaAutosize } from '@mui/material';
+// import { DatePicker, TimePicker, LocalizationProvider } from '@mui/lab';
+// import { TextField, TextareaAutosize } from '@mui/material';
 
 export default function ReportCrime() {
 	return (
 		<>
-			<LocalizationProvider>
+			<h1>This is where the form to report a crime will be.</h1>
+			{/* <LocalizationProvider>
 				<DatePicker
 					label='Incedent Date'
 					renderInput={(params) => <TextField {...params} />}
@@ -19,7 +20,7 @@ export default function ReportCrime() {
 					placeholder='Empty'
 					style={{ width: 200 }}
 				/>
-			</LocalizationProvider>
+			</LocalizationProvider> */}
 		</>
 	);
 }

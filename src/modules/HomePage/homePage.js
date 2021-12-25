@@ -1,10 +1,10 @@
 import React from 'react';
-import LoginButton from '../Buttons/Login';
 
 function HomePage() {
 	return (
 		<>
-			<LoginButton />
+			<h1>Welcome to the homepage</h1>
+			<h2>This is where We will have something of a landing page</h2>
 		</>
 	);
 }

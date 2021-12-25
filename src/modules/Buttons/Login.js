@@ -9,6 +9,7 @@ const LoginButton = () => {
 		<Button
 			variant='contained'
 			color='success'
+			fullWidth
 			onClick={() => loginWithRedirect()}
 		>
 			Login

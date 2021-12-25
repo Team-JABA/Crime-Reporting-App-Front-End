@@ -16,11 +16,12 @@ import MenuIcon from '@mui/icons-material/Menu';
 import LogoutButton from '../Buttons/Logout';
 import LoginButton from '../Buttons/Login';
 import { useAuth0 } from '@auth0/auth0-react';
+import { Link } from 'react-router-dom';
 
 function Header() {
-	const pages = ['Home', 'Crime List', 'Report'];
-	const settingsLogout = ['Profile', 'Account', 'Dashboard', <LogoutButton />];
-	const settingsLogin = ['Profile', 'Account', 'Dashboard', <LoginButton />];
+	const pages = ['Home', 'CrimeList'];
+	const settingsLogout = ['Profile', 'Dashboard', <LogoutButton />];
+	const settingsLogin = ['Profile', 'Dashboard', <LoginButton />];
 	const [anchorElNav, setAnchorElNav] = React.useState(null);
 	const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -46,7 +47,7 @@ function Header() {
 
 	return (
 		<AppBar position='static'>
-			<Container maxWidth='xl'>
+			<Container maxWidth='false'>
 				<Toolbar disableGutters>
 					<Typography
 						variant='h6'
@@ -99,17 +100,19 @@ function Header() {
 						component='div'
 						sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
 					>
-						LOGO
+						Canary
 					</Typography>
 					<Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
 						{pages.map((page) => (
-							<Button
-								key={page}
-								onClick={handleCloseNavMenu}
-								sx={{ my: 2, color: 'white', display: 'block' }}
-							>
-								{page}
-							</Button>
+							<Link to={`/${page}`}>
+								<Button
+									key={page}
+									onClick={handleCloseNavMenu}
+									sx={{ my: 2, color: 'white', display: 'block' }}
+								>
+									{page}
+								</Button>
+							</Link>
 						))}
 					</Box>
 
@@ -117,7 +120,7 @@ function Header() {
 						<Tooltip title='Open settings'>
 							<IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
 								{!isAuthenticated ? (
-									<Avatar alt='Remy Sharp' src='/static/images/avatar/2.jpg' />
+									<Avatar alt='' />
 								) : (
 									<Avatar alt={user.name} src={user.picture} />
 								)}
@@ -142,7 +145,9 @@ function Header() {
 							{!isAuthenticated
 								? settingsLogin.map((setting) => (
 										<MenuItem key={setting} onClick={handleCloseNavMenu}>
-											<Typography textAlign='center'>{setting}</Typography>
+											<Link to={`/${setting}`}>
+												<Typography textAlign='center'>{setting}</Typography>
+											</Link>
 										</MenuItem>
 								  ))
 								: settingsLogout.map((setting) => (
