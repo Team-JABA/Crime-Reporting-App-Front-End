@@ -12,6 +12,4 @@ function App() {
 	);
 }
 
-// need to get a browser router going here.
-
 export default App;
