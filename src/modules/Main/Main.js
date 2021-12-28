@@ -1,11 +1,11 @@
 import React from 'react';
 import Map from '../Map/Map';
-import { Grid } from '@mui/material';
 import Profile from '../Profile/Profile';
 import ReportCrime from '../ReportCrime/reportCrime';
 import { Routes, Route } from 'react-router-dom';
 import Login from '../Login/Login';
 import { useAuth0 } from '@auth0/auth0-react';
+import { Grid } from '@mui/material';
 
 export default function Main() {
 	const { isAuthenticated, isLoading } = useAuth0();
@@ -15,13 +15,14 @@ export default function Main() {
 	}
 
 	return (
-		<Grid
-			container
-			spacing={2}
-			justifyContent={'space-between'}
-			height={'100%'}
-		>
-			<Grid item xs={5}>
+		<Grid container spacing={5} justifyContent={'space-around'} height={'100%'}>
+			<Grid
+				item
+				xs={5}
+				sx={{
+					marginTop: '10px',
+				}}
+			>
 				<Routes>
 					<Route
 						path='/'

@@ -1,27 +1,106 @@
-import React from 'react';
-// import { DatePicker, TimePicker, LocalizationProvider } from '@mui/lab';
-// import { TextField, TextareaAutosize } from '@mui/material';
+import React, { useState } from 'react';
+import {
+	TextField,
+	Button,
+	Paper,
+	Grid,
+	Typography,
+	FormControl,
+	InputLabel,
+	Select,
+	MenuItem,
+} from '@mui/material';
+import { makeStyles } from '@material-ui/styles';
+import { Box } from '@mui/system';
+
+const useStyles = makeStyles({
+	rootContainer: {
+		backgroundImage: 'url(https://source.unsplash.com/random/?neighborhood)',
+		backgroundRepeat: 'no-repeat',
+		backgroundSize: 'cover',
+		width: '110%',
+		height: '99%',
+		display: 'flex',
+		justifyContent: 'center',
+		alignItems: 'center',
+		borderRadius: 10,
+	},
+	paperContainer: {
+		display: 'flex',
+		justifyContent: 'center',
+		backgroundColor: 'lightgray',
+		width: '50%',
+		height: '75%',
+		borderRadius: 10,
+	},
+});
 
 export default function ReportCrime() {
+	const classes = useStyles();
+
+	const defaultValues = {
+		incident: '',
+		address: '',
+		time: '',
+		city: '',
+	};
+	const [formValues, setFormValues] = useState(defaultValues);
+
+	const handleChange = (e) => {
+		console.log(e.target.value);
+		const { name, value } = e.target;
+		setFormValues({
+			...formValues,
+			[name]: value,
+		});
+		console.log(formValues);
+	};
+
+	const onSubmit = (e) => {
+		e.preventDefault();
+		console.log(formValues);
+	};
+
 	return (
-		<>
-			<h1>This is where the form to report a crime will be.</h1>
-			{/* <LocalizationProvider>
-				<DatePicker
-					label='Incedent Date'
-					renderInput={(params) => <TextField {...params} />}
-				/>
-				<TimePicker
-					label='Incedent Time'
-					renderInput={(params) => <TextField {...params} />}
-				/>
-				<TextareaAutosize
-					aria-label='empty textarea'
-					placeholder='Empty'
-					style={{ width: 200 }}
-				/>
-			</LocalizationProvider> */}
-		</>
+		<Box className={classes.rootContainer}>
+			<Paper className={classes.paperContainer}>
+				{/* <Typography component='h1' variant='h5'>
+					Report A Crime
+				</Typography> */}
+				<form onSubmit={onSubmit}>
+					<Grid>
+						<Grid item>
+							<FormControl fullWidth>
+								<InputLabel id='demo-simple-select-label'>
+									Incident Type
+								</InputLabel>
+								<Select
+									name='incident'
+									value={formValues.incident}
+									label='Incident Type'
+									onChange={handleChange}
+								>
+									<MenuItem value={'DWI'}>DWI</MenuItem>
+									<MenuItem value={'13A'}>ASSUALT</MenuItem>
+									<MenuItem value={'ROBBERY'}>ROBBERY</MenuItem>
+								</Select>
+							</FormControl>
+						</Grid>
+						<Grid item>
+							<TextField
+								id='name-input'
+								name='address'
+								label='Address'
+								type='text'
+								value={formValues.name}
+								onChange={handleChange}
+							/>
+						</Grid>
+					</Grid>
+					<Button type='submit'>Submit</Button>
+				</form>
+			</Paper>
+		</Box>
 	);
 }
 
