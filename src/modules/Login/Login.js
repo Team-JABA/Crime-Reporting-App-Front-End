@@ -1,10 +1,6 @@
 import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
 import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
+import { TextField, Box, Typography, Container, Avatar } from '@mui/material';
 import { useAuth0 } from '@auth0/auth0-react';
 import LoginButton from '../Buttons/Login';
 import { makeStyles } from '@material-ui/styles';
