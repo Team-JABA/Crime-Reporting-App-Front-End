@@ -31,7 +31,7 @@ function Address(props) {
 		}
 		try {
 			let updatedAddress = await axios.get(
-				`https://isnitch-team-jaba.herokuapp.com/api/address/?address=${address.value}`
+				`https://isnitch-team-jaba.herokuapp.com/api/address/?address=${address.value}`,
 			);
 			props.convertAddress(updatedAddress);
 		} catch (e) {
@@ -67,7 +67,7 @@ function Address(props) {
 					handleSubmit();
 				}}
 			>
-				Submit
+				Save
 			</Button>
 		</Box>
 	);

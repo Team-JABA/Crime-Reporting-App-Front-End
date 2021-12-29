@@ -114,7 +114,7 @@ export default function ReportCrime() {
 		e.preventDefault();
 		await axios.post(
 			`https://isnitch-team-jaba.herokuapp.com/incident`,
-			formValues
+			formValues,
 		);
 
 		setFormValues({

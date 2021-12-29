@@ -29,7 +29,7 @@ function Location(props) {
 		}
 		try {
 			let latlngAddress = await axios.get(
-				`https://isnitch-team-jaba.herokuapp.com/api/address/?address=${address.value}`
+				`https://isnitch-team-jaba.herokuapp.com/api/address/?address=${address.value}`,
 			);
 			let userLocation = `${latlngAddress.data.lat}, ${latlngAddress.data.lng}`;
 			props.handleSaveUser(userLocation);
