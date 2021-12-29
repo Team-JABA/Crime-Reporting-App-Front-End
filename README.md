@@ -1,4 +1,4 @@
-# Testing-Intelligence-Machine-TIM
+![iSnitchBanner](./images/iSnitchBanner.png)
 
 <div id="top"></div>
 
@@ -47,37 +47,20 @@
 
 ## About The Project
 
--> `Canary` is a CrimeWatch Application build with the safety and security of Families and Neighbors in-mind. Quickly view updated crime markers on an interactive web-application. View detailed Crime reports straight from the your local police precinct, or submit a crime and have our team verify its authenticity. If we are unable to verify we will repor the crime as (unverified) until we are able to match the crime with a police report from our database.
+ `iSnitch` is a CrimeWatch Application build with the safety and security of Families and Neighbors in-mind. Quickly view updated crime markers on an interactive web-application. View detailed Crime reports straight from the your local police precinct, or submit a crime and have our team verify its authenticity. If we are unable to verify we will report the crime as (unverified) until we are able to match the crime with a police report from our database.
 
 Problem Domain:
 
-- Im moving to a new neighborhood or Ive recenlty become a leader in my community and id like to make sure im up-to-date on all crime occuring around my area. I wish there was a website where I could view local crimes, report local crimes, Verify these crimes occured and view their status as they update. This is where `Canary` comes to the rescue!
+- Im moving to a new neighborhood or Ive recenlty become a leader in my community and id like to make sure im up-to-date on all crime occuring around my area. I wish there was a website where I could view local crimes, report local crimes, Verify these crimes occured and view their status as they update. This is where `iSnitch` comes to the rescue!
 
 Project Management Board:
 
-`(GitHub Projects Board Here UML Here)`
+
 
 UML-ver1:
 
-`(UML Version 2 here)`
+![UML](./images/UML.png)
 
-<br />
-
-UML-ver2:
-
-`(UML Version 2 here)`
-
-<br />
-
-UML-ver3:
-
-`(UML Version 3 here)`
-
-<br />
-
-Schema-UML:
-
-`(Schema UML Here)`
 
 <br />
 
@@ -91,13 +74,41 @@ This is an example of how to list things you need to use the software and how to
 
 ### Installation
 
-- `Add Node Files Dependecies List`
-
+- `Dependecies List`
+``` JS
+  {
+    "@auth0/auth0-react": "^1.8.0",
+    "@emotion/react": "^11.7.1",
+    "@emotion/styled": "^11.6.0",
+    "@mui/icons-material": "^5.2.5",
+    "@mui/lab": "^5.0.0-alpha.61",
+    "@mui/material": "^5.2.5",
+    "@mui/styled-engine-sc": "^5.1.0",
+    "@react-google-maps/api": "^2.7.0",
+    "@testing-library/jest-dom": "^5.16.1",
+    "@testing-library/react": "^12.1.2",
+    "@testing-library/user-event": "^13.5.0",
+    "dotenv": "^10.0.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-google-maps": "^9.4.5",
+    "react-router-dom": "^6.2.1",
+    "react-scripts": "5.0.0",
+    "styled-components": "^5.3.3",
+    "web-vitals": "^2.1.2"
+  }
+```
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Usage
 
-`Insert how to use our App here as we go`
+1. Enter URL into address bar - 
+2. Click "LOGIN" button
+3. LOGIN with Auth0 or Create login
+4. From Profile Page:
+   - View Crimes in the area
+   - See Crimes you have reported
+   - Report Crime
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
