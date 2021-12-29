@@ -36,7 +36,7 @@ export default function Main() {
 						path='/CrimeList'
 						element={<h1>CrimeList Component Goes Here</h1>}
 					/>
-					<Route path='/Profile' element={<Profile />} />
+					<Route path='/Profile' element={isAuthenticated ? <Profile /> : <Login />} />
 				</Routes>
 			</Grid>
 			<Grid item>

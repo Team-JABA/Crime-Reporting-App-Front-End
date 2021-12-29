@@ -35,6 +35,10 @@ function Map() {
 	};
 
 	const center = async () => {
+		console.log(user);
+		if(user === undefined) {
+			setLocation(defaultValues);
+		} 
 		let userLocation = await axios.get(
 			`https://isnitch-team-jaba.herokuapp.com/user`,
 			user.email,
@@ -43,6 +47,7 @@ function Map() {
 		userLocation.data.map((users) => {
 			if (users.userId === user.email) {
 				setLocation({
+					...defaultValues,
 					lat: Number(users.homeCityKey.split(',')[0]),
 					lng: Number(users.homeCityKey.split(',')[1]),
 				});
