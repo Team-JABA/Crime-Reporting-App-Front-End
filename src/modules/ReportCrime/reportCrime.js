@@ -8,13 +8,16 @@ import {
 	InputLabel,
 	Select,
 	MenuItem,
+	Box,
+	Typography,
 } from '@mui/material';
 import { makeStyles } from '@material-ui/styles';
-import { Box } from '@mui/system';
 import axios from 'axios';
+import { useAuth0 } from '@auth0/auth0-react';
+import Address from './Address';
 
 const useStyles = makeStyles({
-	rootContainer: {
+	boxContainer: {
 		backgroundImage: 'url(https://source.unsplash.com/random/?neighborhood)',
 		backgroundRepeat: 'no-repeat',
 		backgroundSize: 'cover',
@@ -28,25 +31,65 @@ const useStyles = makeStyles({
 	paperContainer: {
 		display: 'flex',
 		justifyContent: 'center',
+		alignItems: 'center',
 		backgroundColor: 'lightgray',
 		width: '50%',
 		height: '75%',
 		borderRadius: 10,
+		flexDirection: 'column',
 	},
 	form: {
 		marginTop: '10px',
+		marginBottom: '10px',
+		width: '80%',
+		height: '60%',
+		display: 'flex',
+		alignItems: 'center',
+		justifyContent: 'center',
+	},
+	incident: {
+		width: '100%',
+		marginBottom: '10px',
+	},
+	description: {
+		display: 'flex',
+		justifyContent: 'center',
+		marginBottom: '10px',
+		width: '100%',
+	},
+	button: {
+		display: 'flex',
+		justifyContent: 'center',
 	},
 });
 
 export default function ReportCrime() {
+	const { user } = useAuth0();
 	const classes = useStyles();
 
+	const date = new Date();
+	const [month, day, year] = [
+		date.getMonth(),
+		date.getDate(),
+		date.getFullYear(),
+	];
+	const [hour, minutes, seconds] = [
+		date.getHours(),
+		date.getMinutes(),
+		date.getSeconds(),
+	];
+
+	const zuluDate = `${year}-${month}-${day} ${hour}:${minutes}:${seconds}`;
+
 	const defaultValues = {
-		incident: '',
-		address: '',
-		time: '',
-		city: '',
+		userName: user.name,
+		incidentOffense: '',
+		incidentLat: '',
+		incidentLon: '',
+		incidentDate: zuluDate,
+		incidentOffenseDescription: '',
 	};
+
 	const [formValues, setFormValues] = useState(defaultValues);
 
 	const handleChange = (e) => {
@@ -59,60 +102,81 @@ export default function ReportCrime() {
 		console.log(formValues);
 	};
 
+	const convertAddress = async (address) => {
+		setFormValues({
+			...formValues,
+			incidentLat: address.data.lat.toString().slice(0, 7),
+			incidentLon: address.data.lng.toString().slice(0, 7),
+		});
+	};
+
 	const onSubmit = async (e) => {
 		e.preventDefault();
-		let updatedAddress = await axios.get(
-			`https://isnitch-team-jaba.herokuapp.com/?address=${formValues.address}`
+		await axios.post(
+			`https://isnitch-team-jaba.herokuapp.com/incident`,
+			formValues
 		);
-		console.log(updatedAddress);
-		console.log(formValues);
+
+		setFormValues({
+			...defaultValues,
+		});
 	};
 
 	return (
-		<Box className={classes.rootContainer}>
+		<Box className={classes.boxContainer}>
 			<Paper className={classes.paperContainer}>
-				{/* <Typography component='h1' variant='h5'>
-					Report A Crime
-				</Typography> */}
-				<form onSubmit={onSubmit}>
-					<Grid className={classes.form}>
+				<Typography>REPORT A CRIME</Typography>
+				<Grid className={classes.form}>
+					<form onSubmit={onSubmit}>
+						<Grid className={classes.incident}>
+							<Grid item>
+								<FormControl fullWidth>
+									<InputLabel id='demo-simple-select-label'>
+										Incident Type
+									</InputLabel>
+									<Select
+										name='incidentOffense'
+										value={formValues.incidentOffense}
+										label='Incident Type'
+										onChange={handleChange}
+									>
+										<MenuItem value={'DUI'}>DUI</MenuItem>
+										<MenuItem value={'ASSUALT'}>ASSUALT</MenuItem>
+										<MenuItem value={'ROBBERY'}>ROBBERY</MenuItem>
+										<MenuItem value={'BURGLARY'}>BURGLARY</MenuItem>
+										<MenuItem value={'VANDALISM'}>VANDALISM</MenuItem>
+										<MenuItem value={'KIDNAPPING'}>KIDNAPPING</MenuItem>
+										<MenuItem value={'VEHICLE-THEFT'}>VEHICLE-THEFT</MenuItem>
+									</Select>
+								</FormControl>
+							</Grid>
+						</Grid>
 						<Grid item>
-							<FormControl fullWidth>
-								<InputLabel id='demo-simple-select-label'>
-									Incident Type
-								</InputLabel>
-								<Select
-									name='incident'
-									value={formValues.incident}
-									label='Incident Type'
+							<Address convertAddress={convertAddress} />
+						</Grid>
+						<Grid className={classes.description}>
+							<Grid item>
+								<TextField
+									name='incidentOffenseDescription'
+									value={formValues.incidentOffenseDescription}
+									id='outlined-multiline-static'
+									label='Incident Description'
+									multiline
+									rows={4}
 									onChange={handleChange}
-								>
-									<MenuItem value={'90D'}>DUI</MenuItem>
-									<MenuItem value={'13A'}>ASSUALT</MenuItem>
-									<MenuItem value={'120'}>ROBBERY</MenuItem>
-									<MenuItem value={'220'}>BURGLARY</MenuItem>
-									<MenuItem value={'290'}>VANDALISM</MenuItem>
-									<MenuItem value={'100'}>KIDNAPPING</MenuItem>
-									<MenuItem value={'240'}>VEHICLE-THEFT</MenuItem>
-								</Select>
-							</FormControl>
+								/>
+							</Grid>
 						</Grid>
-						<Grid item>
-							<TextField
-								id='name-input'
-								name='address'
-								label='Address'
-								type='text'
-								value={formValues.name}
-								onChange={handleChange}
-							/>
+						<Grid item className={classes.button}>
+							<Button type='submit' color='success' variant='contained'>
+								Submit
+							</Button>
 						</Grid>
-					</Grid>
-					<Button type='submit'>Submit</Button>
-				</form>
+					</form>
+				</Grid>
 			</Paper>
 		</Box>
 	);
 }
 
-/// This file needs to be reworked. -> Not compiling right;
+// `https://isnitch-team-jaba.herokuapp.com/incident`
