@@ -1,20 +1,27 @@
 import React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
+import {
+	AppBar,
+	Box,
+	Toolbar,
+	IconButton,
+	Typography,
+	Menu,
+	Container,
+	Avatar,
+	Button,
+	Tooltip,
+	MenuItem,
+} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
+import LogoutButton from '../Buttons/Logout';
+import LoginButton from '../Buttons/Login';
+import { useAuth0 } from '@auth0/auth0-react';
+import { Link } from 'react-router-dom';
 
-function Header() {
-	const pages = ['Products', 'Pricing', 'Blog'];
-	const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+function Footer() {
+	const pages = ['Home', 'CrimeList'];
+	const settingsLogout = ['Profile', 'Dashboard', <LogoutButton />];
+	const settingsLogin = ['Profile', 'Dashboard', <LoginButton />];
 	const [anchorElNav, setAnchorElNav] = React.useState(null);
 	const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -32,9 +39,15 @@ function Header() {
 	const handleCloseUserMenu = () => {
 		setAnchorElUser(null);
 	};
+	const { user, isAuthenticated, isLoading } = useAuth0();
+
+	if (isLoading) {
+		return <div>Loading ...</div>;
+	}
+
 	return (
 		<AppBar position='static'>
-			<Container maxWidth='xl'>
+			<Container maxWidth='false'>
 				<Toolbar disableGutters>
 					<Typography
 						variant='h6'
@@ -42,7 +55,7 @@ function Header() {
 						component='div'
 						sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
 					>
-						Canary
+						iSnitch
 					</Typography>
 
 					<Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -87,24 +100,30 @@ function Header() {
 						component='div'
 						sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
 					>
-						LOGO
+						iSnitch
 					</Typography>
 					<Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
 						{pages.map((page) => (
-							<Button
-								key={page}
-								onClick={handleCloseNavMenu}
-								sx={{ my: 2, color: 'white', display: 'block' }}
-							>
-								{page}
-							</Button>
+							<Link to={`/${page}`}>
+								<Button
+									key={page}
+									onClick={handleCloseNavMenu}
+									sx={{ my: 2, color: 'white', display: 'block' }}
+								>
+									{page}
+								</Button>
+							</Link>
 						))}
 					</Box>
 
 					<Box sx={{ flexGrow: 0 }}>
 						<Tooltip title='Open settings'>
 							<IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-								<Avatar alt='Remy Sharp' src='/static/images/avatar/2.jpg' />
+								{!isAuthenticated ? (
+									<Avatar alt='' />
+								) : (
+									<Avatar alt={user.name} src={user.picture} />
+								)}
 							</IconButton>
 						</Tooltip>
 						<Menu
@@ -123,17 +142,27 @@ function Header() {
 							open={Boolean(anchorElUser)}
 							onClose={handleCloseUserMenu}
 						>
-							{settings.map((setting) => (
-								<MenuItem key={setting} onClick={handleCloseNavMenu}>
-									<Typography textAlign='center'>{setting}</Typography>
-								</MenuItem>
-							))}
+							{!isAuthenticated
+								? settingsLogin.map((setting) => (
+										<MenuItem key={setting} onClick={handleCloseNavMenu}>
+											<Link to={`/${setting}`}>
+												<Typography textAlign='center'>{setting}</Typography>
+											</Link>
+										</MenuItem>
+									))
+								: settingsLogout.map((setting) => (
+										<MenuItem key={setting} onClick={handleCloseNavMenu}>
+											<Link to={`/${setting}`}>
+												<Typography textAlign='center'>{setting}</Typography>
+											</Link>
+										</MenuItem>
+									))}
 						</Menu>
 					</Box>
 				</Toolbar>
 			</Container>
 		</AppBar>
-	); /// Closes the return();
+	);
 }
 
-export default Header;
+export default Footer;

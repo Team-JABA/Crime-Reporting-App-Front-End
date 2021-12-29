@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
+import { GoogleMap, LoadScript } from '@react-google-maps/api';
 import { makeStyles } from '@material-ui/styles';
 import { Box } from '@mui/material';
 import axios from 'axios';
@@ -28,6 +28,7 @@ function Map() {
 
 	let [location, setLocation] = useState(defaultValues);
 	const [incidentReport, setIncidentReport] = useState([]);
+
 
 	let incidents = async () => {
 		let allIncidents = await axios.get('https://isnitch-team-jaba.herokuapp.com/incident');
@@ -64,13 +65,7 @@ function Map() {
 
 	useEffect(() => {
 		center();
-		// incidents();
 	}, []);
-
-
-
-
-
 
 	return (
 		<Box className={classes.box}>
@@ -95,8 +90,6 @@ function Map() {
 		</Box>
 	);
 }
-
-// const WrappedMap = withScriptjs(withGoogleMap(Map));
 
 export default Map;
 
