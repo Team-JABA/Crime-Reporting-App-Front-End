@@ -1,7 +1,7 @@
 import React from 'react';
 import Map from '../Map/Map';
 import Profile from '../Profile/Profile';
-import ReportCrime from '../ReportCrime/reportCrime';
+import ReportCrime from '../ReportCrime/ReportCrime';
 import { Routes, Route } from 'react-router-dom';
 import Login from '../Login/Login';
 import { useAuth0 } from '@auth0/auth0-react';
