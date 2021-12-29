@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
-import { Box, Grid, Typography, Button } from '@mui/material';
+import { Box, Grid, Typography } from '@mui/material';
 import { makeStyles } from '@material-ui/styles';
 import Location from './Location';
 import axios from 'axios';
@@ -33,10 +33,10 @@ export default function Profile() {
 	const classes = useStyles();
 	let [userName, setUserName] = useState('');
 
-	const handleSaveUser = async (location, e) => {
+	const handleSaveUser = async (location) => {
 		let userLocation = await axios.get(
 			`https://isnitch-team-jaba.herokuapp.com/user`,
-			user.email
+			user.email,
 		);
 		console.log(userLocation);
 		userLocation.data.map((users) => {
@@ -44,7 +44,6 @@ export default function Profile() {
 				setUserName((userName = users.userId));
 			}
 		});
-		console.log(userName);
 		if (user.email === userName) {
 			console.log('in the if');
 			console.log(location);
@@ -52,7 +51,7 @@ export default function Profile() {
 				`https://isnitch-team-jaba.herokuapp.com/user/${user.email}`,
 				{
 					homeCityKey: location,
-				}
+				},
 			);
 		} else {
 			console.log('in the else');

@@ -37,7 +37,7 @@ function Map() {
 	const center = async () => {
 		let userLocation = await axios.get(
 			`https://isnitch-team-jaba.herokuapp.com/user`,
-			user.email
+			user.email,
 		);
 
 		userLocation.data.map((users) => {
@@ -47,6 +47,7 @@ function Map() {
 					lng: Number(users.homeCityKey.split(',')[1]),
 				});
 			}
+			return location;
 		});
 	};
 
