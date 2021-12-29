@@ -1,72 +1,77 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
-import {
-	List,
-	ListItem,
-	ListItemIcon,
-	ListItemText,
-	ListSubheader,
-	Switch,
-} from '@mui/material';
-import WifiIcon from '@mui/icons-material/Wifi';
-import BluetoothIcon from '@mui/icons-material/Bluetooth';
+import { Box, Grid, Typography, Button } from '@mui/material';
+import { makeStyles } from '@material-ui/styles';
+import Location from './Location';
+import axios from 'axios';
 
+const useStyles = makeStyles({
+	boxContainer: {
+		backgroundImage: 'url(https://source.unsplash.com/random/?neighborhood)',
+		backgroundRepeat: 'no-repeat',
+		backgroundSize: 'cover',
+		width: '110%',
+		height: '99%',
+		display: 'flex',
+		justifyContent: 'center',
+		alignItems: 'center',
+		borderRadius: 10,
+	},
+	paperContainer: {
+		display: 'flex',
+		justifyContent: 'center',
+		alignItems: 'center',
+		backgroundColor: 'lightgray',
+		width: '50%',
+		height: '75%',
+		borderRadius: 10,
+		flexDirection: 'column',
+	},
+});
 export default function Profile() {
-	const { user, isAuthenticated, isLoading } = useAuth0();
+	const { user } = useAuth0();
+	const classes = useStyles();
+	let [userName, setUserName] = useState('');
 
-	const [checked, setChecked] = React.useState(['wifi']);
-
-	const handleToggle = (value) => () => {
-		const currentIndex = checked.indexOf(value);
-		const newChecked = [...checked];
-
-		if (currentIndex === -1) {
-			newChecked.push(value);
+	const handleSaveUser = async (location, e) => {
+		let userLocation = await axios.get(
+			`https://isnitch-team-jaba.herokuapp.com/user`,
+			user.email
+		);
+		console.log(userLocation);
+		userLocation.data.map((users) => {
+			if (users.userId === user.email) {
+				setUserName((userName = users.userId));
+			}
+		});
+		console.log(userName);
+		if (user.email === userName) {
+			console.log('in the if');
+			console.log(location);
+			await axios.put(`http://localhost:3001/user/${user.email}`, {
+				homeCityKey: location,
+			});
 		} else {
-			newChecked.splice(currentIndex, 1);
+			console.log('in the else');
+			await axios.post(`http://localhost:3001/user`, {
+				userId: user.email,
+				homeCityKey: location,
+			});
 		}
-
-		setChecked(newChecked);
 	};
 
 	return (
-		<List
-			sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
-			subheader={<ListSubheader>Settings</ListSubheader>}
-		>
-			<ListItem>
-				<ListItemIcon>
-					<WifiIcon />
-				</ListItemIcon>
-				<ListItemText id='switch-list-label-wifi' primary='Wi-Fi' />
-				<Switch
-					edge='end'
-					onChange={handleToggle('wifi')}
-					checked={checked.indexOf('wifi') !== -1}
-					inputProps={{
-						'aria-labelledby': 'switch-list-label-wifi',
-					}}
-				/>
-			</ListItem>
-			<ListItem>
-				<ListItemIcon>
-					<BluetoothIcon />
-				</ListItemIcon>
-				<ListItemText id='switch-list-label-bluetooth' primary='Bluetooth' />
-				<Switch
-					edge='end'
-					onChange={handleToggle('bluetooth')}
-					checked={checked.indexOf('bluetooth') !== -1}
-					inputProps={{
-						'aria-labelledby': 'switch-list-label-bluetooth',
-					}}
-				/>
-			</ListItem>
-		</List>
+		<Box className={classes.boxContainer}>
+			<Grid className={classes.paperContainer}>
+				<Grid item>
+					<Typography>{user.name}</Typography>
+					<Typography>Settings</Typography>
+				</Grid>
+				<Grid item>
+					<Typography>Edit Your Location</Typography>
+					<Location handleSaveUser={handleSaveUser} />
+				</Grid>
+			</Grid>
+		</Box>
 	);
 }
-
-// SImple profile section to display user information taken from Auth0
-
-//Ive imported what is needed from Auth0 to reference the user information. Here Id simply like a small form that can update the state of the user map to display the home city of the user. This way when they open up the map for their user profiel the map is auto-targeted to their specific area of choice.
-// This will require a form that does a backend api POST to the data base to update user location. There is a google-GeoCode API that can convert addresses to Lat: Lng: values which is what we need to store the data as in the DB in order to access this from the Map component.

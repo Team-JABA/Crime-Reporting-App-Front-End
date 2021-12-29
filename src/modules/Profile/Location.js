@@ -19,21 +19,20 @@ const useStyles = makeStyles({
 	},
 });
 
-function Address(props) {
+function Location(props) {
 	const classes = useStyles();
 	const [address, setAddress] = useState('');
 
 	const handleSubmit = async () => {
-		console.log('address submit');
-		console.log(address.value);
 		if (!address.value) {
 			alert('Enter Valid Address');
 		}
 		try {
-			let updatedAddress = await axios.get(
+			let latlngAddress = await axios.get(
 				`https://isnitch-team-jaba.herokuapp.com/api/address/?address=${address.value}`
 			);
-			props.convertAddress(updatedAddress);
+			let userLocation = `${latlngAddress.data.lat}, ${latlngAddress.data.lng}`;
+			props.handleSaveUser(userLocation);
 		} catch (e) {
 			new Error('no valid address', e);
 		}
@@ -41,13 +40,11 @@ function Address(props) {
 
 	const handleAddress = (e) => {
 		const { value } = e.target;
-		console.log(value);
+
 		setAddress({
 			value,
 		});
-		console.log(address);
 	};
-	console.log(address);
 
 	return (
 		<Box className={classes.paperContainer}>
@@ -67,10 +64,10 @@ function Address(props) {
 					handleSubmit();
 				}}
 			>
-				Submit
+				Save
 			</Button>
 		</Box>
 	);
 }
 
-export default Address;
+export default Location;

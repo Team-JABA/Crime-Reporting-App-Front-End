@@ -152,7 +152,9 @@ function Header() {
 								  ))
 								: settingsLogout.map((setting) => (
 										<MenuItem key={setting} onClick={handleCloseNavMenu}>
-											<Typography textAlign='center'>{setting}</Typography>
+											<Link to={`/${setting}`}>
+												<Typography textAlign='center'>{setting}</Typography>
+											</Link>
 										</MenuItem>
 								  ))}
 						</Menu>
