@@ -41,17 +41,15 @@ function Map() {
 		);
 
 		userLocation.data.map((users) => {
-			console.log(Number(users.homeCityKey.split(',')[1]));
 			if (users.userId === user.email) {
 				setLocation({
-					...defaultValues,
 					lat: Number(users.homeCityKey.split(',')[0]),
 					lng: Number(users.homeCityKey.split(',')[1]),
 				});
 			}
 		});
 	};
-	console.log(location);
+
 	useEffect(() => {
 		center();
 	}, []);
