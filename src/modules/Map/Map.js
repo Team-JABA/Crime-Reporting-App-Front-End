@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
-import Markers from './Markers';
 import { makeStyles } from '@material-ui/styles';
 import { Box } from '@mui/material';
 import axios from 'axios';
 import { useAuth0 } from '@auth0/auth0-react';
+import Markers from './Markers';
 
 const useStyles = makeStyles({
 	box: {
@@ -27,6 +27,14 @@ function Map() {
 	};
 
 	let [location, setLocation] = useState(defaultValues);
+	const [incidentReport, setIncidentReport] = useState([]);
+
+
+	let incidents = async () => {
+		let allIncidents = await axios.get('https://isnitch-team-jaba.herokuapp.com/incident');
+		setIncidentReport(...incidentReport, allIncidents.data);
+	};
+	
 
 	const containerStyle = {
 		width: '110%',
@@ -35,7 +43,6 @@ function Map() {
 	};
 
 	const center = async () => {
-		console.log(user);
 		if(user === undefined) {
 			setLocation(defaultValues);
 		} 
@@ -62,21 +69,27 @@ function Map() {
 
 	return (
 		<Box className={classes.box}>
-			<LoadScript googleMapsApiKey={MAP_API}>
+			<LoadScript googleMapsApiKey={MAP_API}
+					onLoad={incidents}
+					>
 				<GoogleMap
 					mapContainerStyle={containerStyle}
 					center={location}
 					zoom={13}
+
 				>
-					{/* Child components, such as markers, info windows, etc. */}
-					<Markers />
+					{incidentReport.map(incident => {
+						return (
+							<Markers
+							key={incident.createdAt}
+							incident={incident}/>
+						);
+					})};
 				</GoogleMap>
 			</LoadScript>
 		</Box>
 	);
 }
-
-// const WrappedMap = withScriptjs(withGoogleMap(Map));
 
 export default Map;
 
