@@ -1,9 +1,9 @@
 import * as React from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
-import { TextField, Box, Typography, Container, Avatar } from '@mui/material';
+import { Box, Typography, Avatar } from '@mui/material';
+import { makeStyles } from '@material-ui/styles';
 import { useAuth0 } from '@auth0/auth0-react';
 import LoginButton from '../Buttons/Login';
-import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles({
 	rootContainer: {
@@ -59,29 +59,6 @@ export default function Login() {
 					noValidate
 					sx={{ mt: 1, backgroundColor: 'lightgray', width: '25%' }}
 				>
-					{/* <TextField
-						margin='normal'
-						required
-						fullWidth
-						id='email'
-						label='Email Address'
-						name='email'
-						autoFocus
-						disabled='true'
-						color='secondary'
-						variant='filled'
-					/>
-					<TextField
-						margin='normal'
-						required
-						fullWidth
-						name='password'
-						label='Password'
-						type='password'
-						id='password'
-						disabled='true'
-						variant='filled'
-					/> */}
 					<LoginButton />
 				</Box>
 			</Box>
