@@ -102,7 +102,7 @@ This is an example of how to list things you need to use the software and how to
 
 ## Usage
 
-1. Enter URL into address bar - 
+1. Enter URL into address bar - https://isnitch.netlify.app/
 2. Click "LOGIN" button
 3. LOGIN with Auth0 or Create login
 4. From Profile Page:
