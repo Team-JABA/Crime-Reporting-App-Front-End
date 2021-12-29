@@ -48,12 +48,15 @@ export default function Profile() {
 		if (user.email === userName) {
 			console.log('in the if');
 			console.log(location);
-			await axios.put(`http://localhost:3001/user/${user.email}`, {
-				homeCityKey: location,
-			});
+			await axios.put(
+				`https://isnitch-team-jaba.herokuapp.com/user/${user.email}`,
+				{
+					homeCityKey: location,
+				}
+			);
 		} else {
 			console.log('in the else');
-			await axios.post(`http://localhost:3001/user`, {
+			await axios.post(`https://isnitch-team-jaba.herokuapp.com/user`, {
 				userId: user.email,
 				homeCityKey: location,
 			});
