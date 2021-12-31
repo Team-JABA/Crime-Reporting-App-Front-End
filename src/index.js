@@ -2,21 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import MapProvider from './context/map';
-import { Auth0Provider } from '@auth0/auth0-react';
-import { BrowserRouter } from 'react-router-dom';
+import Auth0ProviderWithHistory from './context/auth0-provider-with-history';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 
 ReactDOM.render(
-	<Auth0Provider
-	domain='dev-47krlgr2.us.auth0.com'
-	clientId='XLlqawAL3xvtnMqoiXheYVnD7tCygRNv'
-	redirectUri={window.location.origin}
-	>
+	<Router>
+		<Auth0ProviderWithHistory>
 			<MapProvider>
-			<BrowserRouter>
 				<App />
-			</BrowserRouter>
-		</MapProvider>
-		</Auth0Provider>,
+			</MapProvider>
+		</Auth0ProviderWithHistory>
+	</Router>,
 	document.getElementById('root'),
 );
+
