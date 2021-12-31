@@ -18,7 +18,7 @@ const useStyles = makeStyles({
 });
 
 function Map() {
-	const { user } = useAuth0();
+	const { user, isLoading } = useAuth0();
 	const classes = useStyles();
 	const MAP_API = process.env.REACT_APP_MAP_API_KEY;
 	const MapValues = useContext(MapContext);
@@ -51,14 +51,16 @@ function Map() {
 	};
 
 	useEffect(() => {
-		center();
-	}, []);
-	// center();
+		if(!isLoading){
+			center();
+		}
+		
+	}, [isLoading]);
 
 	return (
 		<Box className={classes.box}>
 			<LoadScript googleMapsApiKey={MAP_API}
-					// onLoad={incidents}
+					onLoad={center}
 					>
 				<GoogleMap
 					mapContainerStyle={containerStyle}
