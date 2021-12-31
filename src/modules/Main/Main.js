@@ -8,11 +8,8 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { Grid } from '@mui/material';
 
 export default function Main() {
-	const { isAuthenticated, isLoading } = useAuth0();
+	const { isAuthenticated} = useAuth0();
 
-	if (isLoading) {
-		return <div>Loading ...</div>;
-	}
 
 	return (
 		<Grid container spacing={5} justifyContent={'space-around'} height={'100%'}>

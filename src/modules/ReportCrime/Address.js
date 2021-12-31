@@ -47,7 +47,6 @@ function Address(props) {
 		});
 		console.log(address);
 	};
-	console.log(address);
 
 	return (
 		<Box className={classes.paperContainer}>

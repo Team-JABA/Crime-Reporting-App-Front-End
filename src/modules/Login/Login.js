@@ -32,11 +32,8 @@ const useStyles = makeStyles({
 
 export default function Login() {
 	const classes = useStyles();
-	const { user, isAuthenticated, isLoading } = useAuth0();
+	const { user, isAuthenticated} = useAuth0();
 
-	if (isLoading) {
-		return <div>Loading ...</div>;
-	}
 
 	const handleSubmit = () => {};
 	return (

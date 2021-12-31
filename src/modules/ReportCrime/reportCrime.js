@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import axios from 'axios';
 import {
 	TextField,
 	Button,
@@ -12,9 +13,9 @@ import {
 	Typography,
 } from '@mui/material';
 import { makeStyles } from '@material-ui/styles';
-import axios from 'axios';
 import { useAuth0 } from '@auth0/auth0-react';
 import Address from './Address';
+import  {MapContext}  from '../../context/map';
 
 const useStyles = makeStyles({
 	boxContainer: {
@@ -66,6 +67,7 @@ const useStyles = makeStyles({
 export default function ReportCrime() {
 	const { user } = useAuth0();
 	const classes = useStyles();
+	const MapValues = useContext(MapContext);
 
 	const date = new Date();
 	const [month, day, year] = [
@@ -110,12 +112,19 @@ export default function ReportCrime() {
 		});
 	};
 
+
+
 	const onSubmit = async (e) => {
 		e.preventDefault();
+		console.log(formValues);
 		await axios.post(
 			`https://isnitch-team-jaba.herokuapp.com/incident`,
 			formValues,
 		);
+		MapValues.setIncidentReport(
+		[...MapValues.incidentReport,
+		formValues]
+		)
 
 		setFormValues({
 			...defaultValues,
@@ -179,4 +188,3 @@ export default function ReportCrime() {
 	);
 }
 
-// `https://isnitch-team-jaba.herokuapp.com/incident`

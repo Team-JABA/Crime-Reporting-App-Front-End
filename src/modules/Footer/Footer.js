@@ -39,11 +39,7 @@ function Footer() {
 	const handleCloseUserMenu = () => {
 		setAnchorElUser(null);
 	};
-	const { user, isAuthenticated, isLoading } = useAuth0();
-
-	if (isLoading) {
-		return <div>Loading ...</div>;
-	}
+	const { user, isAuthenticated} = useAuth0();
 
 	return (
 		<AppBar position='static'>
