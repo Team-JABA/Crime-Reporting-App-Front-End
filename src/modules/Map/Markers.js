@@ -1,4 +1,4 @@
-import React, { useState, useEffect }  from 'react';
+import React, { useState}  from 'react';
 import { Marker, InfoWindow } from '@react-google-maps/api';
 import {Box, Typography, Grid} from '@mui/material';
 import { makeStyles } from '@material-ui/styles';
@@ -29,17 +29,16 @@ const useStyles = makeStyles({
 export default function Markers(props) {
 	const classes = useStyles();
 	let [selected, setSelected] = useState(null);
-
 	return (
 		<>
 		<Marker
-			position={{ lat: props.incident.incidentLat, lng: props.incident.incidentLon }}
+			position={{ lat: Number(props.incident.incidentLat), lng: Number(props.incident.incidentLon) }}
 			title={props.incident.incidentOffense}
 			animation={window.google.maps.Animation.DROP}
 			onClick={() => setSelected(props.incident)}
 		/>
 		{selected === props.incident ? 
-		<InfoWindow position={ {lat: props.incident.incidentLat, lng: props.incident.incidentLon} } onCloseClick={() => {setSelected(null);}}>
+		<InfoWindow position={ {lat: Number(props.incident.incidentLat), lng: Number(props.incident.incidentLon)} } onCloseClick={() => {setSelected(null);}}>
 			<Box className={classes.grid}>
 				<Grid>
 					<Grid item className={classes.gridItem}>

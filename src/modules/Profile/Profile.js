@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import axios from 'axios';
+import  {MapContext}  from '../../context/map';
 import { useAuth0 } from '@auth0/auth0-react';
 import { Box, Grid, Typography } from '@mui/material';
 import { makeStyles } from '@material-ui/styles';
 import Location from './Location';
-import axios from 'axios';
 
 const useStyles = makeStyles({
 	boxContainer: {
@@ -29,35 +30,43 @@ const useStyles = makeStyles({
 	},
 });
 export default function Profile() {
+	const MapValues = useContext(MapContext);
 	const { user } = useAuth0();
 	const classes = useStyles();
 	let [userName, setUserName] = useState('');
 
 	const handleSaveUser = async (location) => {
-		let userLocation = await axios.get(
+		let getUsers = await axios.get(
 			`https://isnitch-team-jaba.herokuapp.com/user`,
 			user.email,
 		);
-		console.log(userLocation);
-		userLocation.data.map((users) => {
+		getUsers.data.map((users) => {
 			if (users.userId === user.email) {
 				setUserName((userName = users.userId));
 			}
 		});
 		if (user.email === userName) {
-			console.log('in the if');
-			console.log(location);
 			await axios.put(
 				`https://isnitch-team-jaba.herokuapp.com/user/${user.email}`,
 				{
 					homeCityKey: location,
 				},
-			);
+				);
+				MapValues.setLocation({
+					lat: Number(location.split(',')[0]),
+					lng: Number(location.split(',')[1]),
+				});
+				console.log(MapValues.userLocation)
+				console.log(MapValues.location)
+
 		} else {
-			console.log('in the else');
 			await axios.post(`https://isnitch-team-jaba.herokuapp.com/user`, {
 				userId: user.email,
 				homeCityKey: location,
+			});
+			MapValues.setLocation({
+				lat: Number(location.split(',')[0]),
+				lng: Number(location.split(',')[1]),
 			});
 		}
 	};
