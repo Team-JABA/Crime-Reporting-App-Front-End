@@ -12,7 +12,7 @@ function MapProvider({children}){
   const [incidentReport, setIncidentReport] = useState([]);
 
 let incidents = async () => {
-      let allIncidents = await axios.get('${process.env.REACT_APP_API}/incident');
+      let allIncidents = await axios.get(`${process.env.REACT_APP_API}/incident`);
       setIncidentReport(allIncidents.data);
     };
 
