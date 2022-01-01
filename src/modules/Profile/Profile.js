@@ -37,7 +37,7 @@ export default function Profile() {
 
 	const handleSaveUser = async (location) => {
 		let getUsers = await axios.get(
-			`https://isnitch-team-jaba.herokuapp.com/user`,
+			`${process.env.REACT_APP_API}/user`,
 			user.email,
 		);
 		getUsers.data.map((users) => {
@@ -47,20 +47,13 @@ export default function Profile() {
 		});
 		if (user.email === userName) {
 			await axios.put(
-				`https://isnitch-team-jaba.herokuapp.com/user/${user.email}`,
+				`${process.env.REACT_APP_API}/user/${user.email}`,
 				{
 					homeCityKey: location,
 				},
 				);
-				MapValues.setLocation({
-					lat: Number(location.split(',')[0]),
-					lng: Number(location.split(',')[1]),
-				});
-				console.log(MapValues.userLocation)
-				console.log(MapValues.location)
-
 		} else {
-			await axios.post(`https://isnitch-team-jaba.herokuapp.com/user`, {
+			await axios.post(`${process.env.REACT_APP_API}/user`, {
 				userId: user.email,
 				homeCityKey: location,
 			});
@@ -70,6 +63,7 @@ export default function Profile() {
 			});
 		}
 	};
+
 
 	return (
 		<Box className={classes.boxContainer}>

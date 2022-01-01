@@ -24,14 +24,12 @@ function Address(props) {
 	const [address, setAddress] = useState('');
 
 	const handleSubmit = async () => {
-		console.log('address submit');
-		console.log(address.value);
 		if (!address.value) {
 			alert('Enter Valid Address');
 		}
 		try {
 			let updatedAddress = await axios.get(
-				`https://isnitch-team-jaba.herokuapp.com/api/address/?address=${address.value}`,
+				`${process.env.REACT_APP_API}/api/address/?address=${address.value}`,
 			);
 			props.convertAddress(updatedAddress);
 		} catch (e) {
@@ -41,11 +39,9 @@ function Address(props) {
 
 	const handleAddress = (e) => {
 		const { value } = e.target;
-		console.log(value);
 		setAddress({
 			value,
 		});
-		console.log(address);
 	};
 
 	return (

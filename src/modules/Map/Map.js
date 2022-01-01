@@ -35,7 +35,7 @@ function Map() {
 			console.log('help');
 		}
 		let userLocation = await axios.get(
-			`https://isnitch-team-jaba.herokuapp.com/user`,
+			`${process.env.REACT_APP_API}/user`,
 			user.email,
 		);
 
@@ -46,7 +46,6 @@ function Map() {
 					lng: Number(users.homeCityKey.split(',')[1]),
 				});
 			}
-			return location;
 		});
 	};
 

@@ -95,13 +95,11 @@ export default function ReportCrime() {
 	const [formValues, setFormValues] = useState(defaultValues);
 
 	const handleChange = (e) => {
-		console.log(e.target.value);
 		const { name, value } = e.target;
 		setFormValues({
 			...formValues,
 			[name]: value,
 		});
-		console.log(formValues);
 	};
 
 	const convertAddress = async (address) => {
@@ -116,9 +114,8 @@ export default function ReportCrime() {
 
 	const onSubmit = async (e) => {
 		e.preventDefault();
-		console.log(formValues);
 		await axios.post(
-			`https://isnitch-team-jaba.herokuapp.com/incident`,
+			`${process.env.REACT_APP_API}/incident`,
 			formValues,
 		);
 		MapValues.setIncidentReport(
