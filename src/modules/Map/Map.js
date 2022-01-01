@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
 import { makeStyles } from '@material-ui/styles';
 import { Box } from '@mui/material';
