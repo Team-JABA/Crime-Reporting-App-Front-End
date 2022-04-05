@@ -2,6 +2,7 @@ import React from 'react';
 import Map from '../Map/Map';
 import Profile from '../Profile/Profile';
 import ReportCrime from '../ReportCrime/reportCrime';
+import CrimeList from '../CrimeList/CrimeList';
 import { Routes, Route } from 'react-router-dom';
 import Login from '../Login/Login';
 import { useAuth0 } from '@auth0/auth0-react';
@@ -31,7 +32,7 @@ export default function Main() {
 					/>
 					<Route
 						path='/CrimeList'
-						element={<h1>CrimeList Component Goes Here</h1>}
+						element={isAuthenticated ? <CrimeList /> : <Login />}
 					/>
 					<Route path='/Profile' element={isAuthenticated ? <Profile /> : <Login />} />
 				</Routes>
